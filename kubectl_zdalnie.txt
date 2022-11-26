@@ -1,0 +1,21 @@
+
+
+// skopiow
+
+doc:
+(Optional) Controlling your cluster from machines other than the control-plane node
+In order to get a kubectl on some other computer (e.g. laptop) to talk to your cluster, 
+you need to copy the administrator kubeconfig file from your control-plane node to your workstation like this:
+
+\scp root@<control-plane-host>:/etc/kubernetes/admin.conf .
+kubectl --kubeconfig ./admin.conf get nodes
+
+
+
+if you want to connect to the API Server from outside the cluster you can use kubectl proxy:
+
+
+scp root@<control-plane-host>:/etc/kubernetes/admin.conf .
+kubectl --kubeconfig ./admin.conf proxy
+
+You can now access the API Server locally at http://localhost:8001/api/v1
