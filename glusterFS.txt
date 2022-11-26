@@ -41,3 +41,9 @@ sudo mount -t glusterfs b1.blazej.info:/share_bk /home/blazej/gluster
 
 ///etc/fstab  - kazdej maszynie
 b1.blazej.info:/share_bk /home/blazej/gluster glusterfs defaults,_netdev 0 0
+
+lub z auto !pamietac o poprawnej nazwe hosta itd..
+cloud0.blazej.pl:/gvol0 /home/blazej/gluster    glusterfs       auto,_netdev 0 0
+
+//sprawdz czy montowanie działa..
+sudo mount -a 
