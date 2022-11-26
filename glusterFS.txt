@@ -1,0 +1,43 @@
+
+
+//repozytorium
+
+sudo add-apt-repository ppa:gluster/glusterfs-3.11
+sudo apt-get update
+
+//instalcja..
+sudo apt-get install glusterfs-server
+
+//Wyłączenie aktualizacji
+sudo apt-mark hold glusterfs*
+
+
+//uruchomienie i dodanie do autostartu
+sudo systemctl start glusterd
+sudo systemctl enable glusterd
+
+//sprawdzenie wzajemnych polaczen
+sudo gluster peer probe host-ip-lub-nazwa
+
+//nowe voluminy
+sudo gluster volume create share_bk replica 2 b1.blazej.info:/data b2.blazej.info:/data force
+
+
+//zmiana uprawnien motowania jesli to konieczne
+sudo gluster volume set share_bk auth.allow 127.0.0.1
+
+sudo gluster volume start share_bk
+
+//------------
+sudo gluster volume status
+
+sudo gluster volume info
+
+
+//zamontowanie volumenu
+sudo mount -t glusterfs b1.blazej.info:/share_bk /home/blazej/gluster
+
+
+
+///etc/fstab  - kazdej maszynie
+b1.blazej.info:/share_bk /home/blazej/gluster glusterfs defaults,_netdev 0 0
