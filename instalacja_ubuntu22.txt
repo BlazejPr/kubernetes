@@ -78,6 +78,8 @@ kubectl apply -f custom-resorces.yaml
 
 
 
+
+
 //Token dla workerow 
 
 kubeadm token create --print-join-command
@@ -87,5 +89,6 @@ kubeadm token create --print-join-command
 kubectl run curl --image=radial/busyboxplus:curl -i --tty
 kubectl delete pods curl
 
+sprawdzenie konfiguracji..
 
-
+kubectl config view
