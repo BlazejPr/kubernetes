@@ -66,8 +66,16 @@ cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 chown $(id -u):$(id -g) $HOME/.kube/config
 
-//Obsługa sieci
-kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+
+CALICO - operator..
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/tigera-operator.yaml
+
+wget https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/custom-resources.yaml
+zmien ip na wymagane....192.168.0.0/16 lub to z inni...
+
+kubectl apply -f custom-resorces.yaml
+
+
 
 
 //Token dla workerow 

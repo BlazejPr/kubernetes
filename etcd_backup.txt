@@ -1,0 +1,22 @@
+
+
+//uzyskaj informacje o podzie w standardowy sposob
+
+kubectl get po -n kube-system
+kubectl describe pod etcd-master-node -n kube-system
+
+
+lub 
+
+From the etcd static pod manifest file located at /etc/kubernetes/manifests/etcd.yaml the location.
+
+
+
+
+Take an etcd snapshot backup using the following command.
+
+ETCDCTL_API=3 
+sudo etcdctl --endpoint=https://localhost:2379 --ca-file=/etc/kubernetes/pki/etcd/ca.crt --cert-file=/etc/kubernetes/pki/etcd/server.crt --key-file=/etc/kubernetes/pki/etcd/server.key snapshot save /home/blazej/gluster/etcd/etcd.db
+
+
+sudo etcdctl --endpoint=https://192.168.1.50:2379 --ca-file=/etc/kubernetes/pki/etcd/ca.crt --cert-file=/etc/kubernetes/pki/etcd/server.crt --key-file=/etc/kubernetes/pki/etcd/server.key ls
